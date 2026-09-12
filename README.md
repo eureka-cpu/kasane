@@ -1,6 +1,6 @@
 # kasane
 
-Two kitty terminal color themes designed for calm reading. Named for *kasane no irome* (重ねの色目), the traditional Japanese practice of pairing kimono layers so that carefully chosen colors show at the sleeves and collar. Each layer is individually restrained, and the combination creates quiet depth without noise.
+Two kitty terminal color themes designed for calm reading. Named for _kasane no irome_ (重ねの色目), the traditional Japanese practice of pairing kimono layers so that carefully chosen colors show at the sleeves and collar. Each layer is individually restrained, and the combination creates quiet depth without noise.
 
 ## Accessibility
 
@@ -32,10 +32,10 @@ include /path/to/kasane/themes/obi.conf
 
 Each theme ships in three forms:
 
-| File | Use |
-|------|-----|
-| `shibui.conf` / `obi.conf` | Main dark background |
-| `shibui-raised.conf` / `obi-raised.conf` | Lighter background for elevated panels |
+| File                                                       | Use                                                                                                      |
+| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `shibui.conf` / `obi.conf`                                 | Main dark background                                                                                     |
+| `shibui-raised.conf` / `obi-raised.conf`                   | Lighter background for elevated panels                                                                   |
 | `shibui-gamma-corrected.conf` / `obi-gamma-corrected.conf` | Pre-shifted for wide-gamut displays so kitty renders the same perceived values as an ICC-managed browser |
 
 ## Usage

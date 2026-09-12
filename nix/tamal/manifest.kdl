@@ -1,0 +1,26 @@
+// ┏┓╻+╻ ╱┏┳┓┏┓┏┳┓┏┓╻
+// ┃┃┃┃┗━┓╹┃╹┣┫┃┃┃┣┫┃   Read the manpage:
+// ╹┗┛╹╱ ╹ ╹ ╹╹╹ ╹╹╹┗┛  $ man nixtamal-manifest
+version "1.3.0"
+inputs {
+	nixpkgs {
+		archive {
+			url "https://github.com/NixOS/nixpkgs/archive/{{fresh_value}}.tar.gz"
+		}
+		hash algorithm=SHA-256
+		fresh-cmd {
+			$ git ls-remote "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
+			| cut -f1
+		}
+	}
+	treefmt {
+		archive {
+			url "https://github.com/numtide/treefmt-nix/archive/{{fresh_value}}.tar.gz"
+		}
+		hash algorithm=SHA-256
+		fresh-cmd {
+			$ git ls-remote "https://github.com/numtide/treefmt-nix.git" --refs "refs/heads/main"
+			| cut -f1
+		}
+	}
+}

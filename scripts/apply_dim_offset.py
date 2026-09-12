@@ -14,12 +14,39 @@ For each raw color X:
 After running this, run gen_gamma.py to regenerate all gamma-corrected files.
 """
 
-import re
 import os
+import re
 
-CALIB_R = [(14,22),(24,29),(29,34),(36,40),(93,90),(139,134),(187,182),(213,206)]
-CALIB_G = [(15,22),(25,30),(30,34),(37,41),(95,92),(100,98),(180,174),(204,197)]
-CALIB_B = [(16,23),(27,32),(32,36),(40,43),(101,98),(103,101),(169,164),(175,169)]
+CALIB_R = [
+    (14, 22),
+    (24, 29),
+    (29, 34),
+    (36, 40),
+    (93, 90),
+    (139, 134),
+    (187, 182),
+    (213, 206),
+]
+CALIB_G = [
+    (15, 22),
+    (25, 30),
+    (30, 34),
+    (37, 41),
+    (95, 92),
+    (100, 98),
+    (180, 174),
+    (204, 197),
+]
+CALIB_B = [
+    (16, 23),
+    (27, 32),
+    (32, 36),
+    (40, 43),
+    (101, 98),
+    (103, 101),
+    (169, 164),
+    (175, 169),
+]
 
 CALIB_R_INV = sorted((y, x) for x, y in CALIB_R)
 CALIB_G_INV = sorted((y, x) for x, y in CALIB_G)
@@ -46,7 +73,7 @@ def pl(calib, x):
 
 
 def icc(h):
-    h = h.lstrip('#')
+    h = h.lstrip("#")
     r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
     return (
         max(0, min(255, pl(CALIB_R, r))),
@@ -69,12 +96,12 @@ def new_raw(hex_color):
     g2 = max(0, min(255, g + DIM[1]))
     b2 = max(0, min(255, b + DIM[2]))
     ri, gi, bi = icc_inv(r2, g2, b2)
-    return f'#{ri:02x}{gi:02x}{bi:02x}'
+    return f"#{ri:02x}{gi:02x}{bi:02x}"
 
 
-HEX_RE = re.compile(r'#[0-9a-fA-F]{6}')
-THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'themes')
-BASE_THEMES = ['ai', 'shibui', 'obi', 'ai-raised', 'shibui-raised', 'obi-raised']
+HEX_RE = re.compile(r"#[0-9a-fA-F]{6}")
+THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "themes")
+BASE_THEMES = ["shibui", "obi", "shibui-raised", "obi-raised"]
 
 
 def verify():
@@ -88,21 +115,24 @@ def verify():
     for old, expected_gc in cases:
         r, g, b = icc(old)
         r2, g2, b2 = r + DIM[0], g + DIM[1], b + DIM[2]
-        actual_gc = f'#{max(0,min(255,r2)):02x}{max(0,min(255,g2)):02x}{max(0,min(255,b2)):02x}'
+        actual_gc = (
+            f"#{max(0,min(255,r2)):02x}{max(0,min(255,g2)):02x}{max(0,min(255,b2)):02x}"
+        )
         nr = new_raw(old)
         ri, gi, bi = icc(nr)
-        gc_from_new = f'#{ri:02x}{gi:02x}{bi:02x}'
-        ok = actual_gc == expected_gc and gc_from_new == expected_gc
-        print(f"  {old} -> gc {actual_gc} ({'OK' if actual_gc == expected_gc else 'FAIL'})"
-              f"  new_raw {nr} -> gc {gc_from_new} ({'OK' if gc_from_new == expected_gc else 'FAIL'})")
+        gc_from_new = f"#{ri:02x}{gi:02x}{bi:02x}"
+        print(
+            f"  {old} -> gc {actual_gc} ({'OK' if actual_gc == expected_gc else 'FAIL'})"
+            f"  new_raw {nr} -> gc {gc_from_new} ({'OK' if gc_from_new == expected_gc else 'FAIL'})"
+        )
 
 
 def update_conf(base):
-    path = os.path.join(THEMES_DIR, f'{base}.conf')
+    path = os.path.join(THEMES_DIR, f"{base}.conf")
     with open(path) as f:
         content = f.read()
     updated = HEX_RE.sub(lambda m: new_raw(m.group(0)), content)
-    with open(path, 'w') as f:
+    with open(path, "w") as f:
         f.write(updated)
     print(f"  updated {base}.conf")
 
@@ -116,5 +146,5 @@ def main():
     print("\nDone. Run gen_gamma.py to regenerate gamma-corrected files.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -6,15 +6,42 @@ Reads themes/{ai,shibui,obi,ai-raised,shibui-raised,obi-raised}.conf
 Writes themes/{...}-gamma-corrected.conf
 """
 
-import re
 import os
+import re
 
 # Calibration: (raw_conf_value, browser_displayed_value) per channel
 # Measured with wl-color-picker on the obi docs page (wide-gamut P3 display, Wayland).
 # Raw values are exact conf hex; browser values are what the ICC-managed browser shows.
-CALIB_R = [(14,22), (24,29), (29,34), (36,40), (93,90), (139,134), (187,182), (213,206)]
-CALIB_G = [(15,22), (25,30), (30,34), (37,41), (95,92), (100,98), (180,174), (204,197)]
-CALIB_B = [(16,23), (27,32), (32,36), (40,43), (101,98), (103,101), (169,164), (175,169)]
+CALIB_R = [
+    (14, 22),
+    (24, 29),
+    (29, 34),
+    (36, 40),
+    (93, 90),
+    (139, 134),
+    (187, 182),
+    (213, 206),
+]
+CALIB_G = [
+    (15, 22),
+    (25, 30),
+    (30, 34),
+    (37, 41),
+    (95, 92),
+    (100, 98),
+    (180, 174),
+    (204, 197),
+]
+CALIB_B = [
+    (16, 23),
+    (27, 32),
+    (32, 36),
+    (40, 43),
+    (101, 98),
+    (103, 101),
+    (169, 164),
+    (175, 169),
+]
 
 
 def piecewise_linear(calib, x):
@@ -35,7 +62,7 @@ def piecewise_linear(calib, x):
 
 
 def icc(hex_color):
-    h = hex_color.lstrip('#')
+    h = hex_color.lstrip("#")
     r, g, b = int(h[0:2], 16), int(h[2:4], 16), int(h[4:6], 16)
     r2 = max(0, min(255, piecewise_linear(CALIB_R, r)))
     g2 = max(0, min(255, piecewise_linear(CALIB_G, g)))
@@ -43,7 +70,7 @@ def icc(hex_color):
     return f"#{r2:02x}{g2:02x}{b2:02x}"
 
 
-HEX_RE = re.compile(r'#[0-9a-fA-F]{6}')
+HEX_RE = re.compile(r"#[0-9a-fA-F]{6}")
 
 GAMMA_BLURB_PREFIX = (
     "## blurb: Gamma-corrected variant -- ICC-shifted so kitty renders the same\n"
@@ -58,16 +85,16 @@ def transform_conf(src_path, dst_path, base_name):
 
     out = []
     for line in lines:
-        if line.startswith('## name:'):
-            out.append(f'## name: {base_name} gamma corrected\n')
+        if line.startswith("## name:"):
+            out.append(f"## name: {base_name} gamma corrected\n")
             continue
-        if line.startswith('## blurb:'):
-            orig_text = line[len('## blurb: '):]
+        if line.startswith("## blurb:"):
+            orig_text = line[len("## blurb: ") :]
             out.append(GAMMA_BLURB_PREFIX + orig_text)
             continue
         out.append(HEX_RE.sub(lambda m: icc(m.group(0)), line))
 
-    with open(dst_path, 'w') as f:
+    with open(dst_path, "w") as f:
         f.writelines(out)
     print(f"  wrote {os.path.basename(dst_path)}")
 
@@ -93,8 +120,8 @@ def verify():
     return ok
 
 
-THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'themes')
-BASE_THEMES = ['ai', 'shibui', 'obi', 'ai-raised', 'shibui-raised', 'obi-raised']
+THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "themes")
+BASE_THEMES = ["shibui", "obi", "shibui-raised", "obi-raised"]
 
 
 def main():
@@ -111,5 +138,5 @@ def main():
     print("\nDone.")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

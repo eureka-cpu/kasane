@@ -1,0 +1,7 @@
+{"v":"1.3.0"
+,"i":{
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-xB8mKMOx1IA9vTDNLmJZ6n4wCMq/cuWBBOzGCRnqxrU="},"fv":"8ce4ef6cb6f871616146b9fe26d2a5ae594e94fe","ps":[]}
+,"treefmt":{"sn":"treefmt-src","kd":[1,{"ft":0,"ur":"https://github.com/numtide/treefmt-nix/archive/27b3b12a8e6375f28ebe122f07d230ca5459bbfa.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-WSFCsDSE5ffgD2MqzkM2CYjeFiKhRF/dJUN8uedb6YE="},"fv":"27b3b12a8e6375f28ebe122f07d230ca5459bbfa","ps":[]}
+}
+,"p":{}
+}
