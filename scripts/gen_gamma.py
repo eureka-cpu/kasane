@@ -2,8 +2,8 @@
 """Generate gamma-corrected kitty theme variants using piecewise linear ICC calibration.
 
 Usage: python3 scripts/gen_gamma.py
-Reads themes/{ai,shibui,obi,ai-raised,shibui-raised,obi-raised}.conf
-Writes themes/{...}-gamma-corrected.conf
+Reads themes/{shibui,obi,shibui-raised,obi-raised}.conf
+Writes themes/{...}-gamma.conf
 """
 
 import os
@@ -86,7 +86,7 @@ def transform_conf(src_path, dst_path, base_name):
     out = []
     for line in lines:
         if line.startswith("## name:"):
-            out.append(f"## name: {base_name} gamma corrected\n")
+            out.append(f"## name: {base_name} gamma\n")
             continue
         if line.startswith("## blurb:"):
             orig_text = line[len("## blurb: ") :]
@@ -130,10 +130,10 @@ def main():
         print("Calibration failed -- aborting.")
         return
     print()
-    print("Generating gamma-corrected themes:")
+    print("Generating gamma themes:")
     for base in BASE_THEMES:
         src = os.path.join(THEMES_DIR, f"{base}.conf")
-        dst = os.path.join(THEMES_DIR, f"{base}-gamma-corrected.conf")
+        dst = os.path.join(THEMES_DIR, f"{base}-gamma.conf")
         transform_conf(src, dst, base)
     print("\nDone.")
 

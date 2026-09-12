@@ -9,6 +9,12 @@
       content="A near-black ashy ground from the kimono's sash, with six accents spanning the full wheel."
     />
     <title>obi — palette study</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="assets/style.css" />
     <style>
       :root {
@@ -29,7 +35,7 @@
         --serif: "Iowan Old Style", "Hoefler Text", Georgia, "Songti SC", serif;
         --sans:
           -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-        --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+        --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
       }
     </style>
   </head>
@@ -40,7 +46,7 @@
         ><a href="shibui.html">shibui</a><span class="sep">/</span
         ><a href="obi.html" class="current">obi</a>
       </nav>
-      <p class="eyebrow">obi &middot; kitty theme</p>
+      <p class="eyebrow">obi &middot; palette study</p>
       <h1>
         A near-black ashy ground from the kimono's sash, with six accents
         spanning the full wheel.
@@ -237,26 +243,27 @@
 
       <section>
         <h2>In place</h2>
-        <div class="term">
-          ~/scrolls <span class="comment"># obi</span>
-          <span class="kw">&#10095;</span> cat obi.theme
+        <!-- prettier-ignore -->
+        <div class="term">~/scrolls <span class="comment"># obi</span>
+<span class="kw">&#10095;</span> cat obi.theme
 
-          <span class="comment">-- palette --</span>
-          <span class="kw">let</span> background =
-          <span class="str">"var(--bg)"</span> <span class="kw">fn</span>
-          <span class="fn">accent</span>(name: <span class="kw">str</span>)
-          -&gt; Color { <span class="kw">match</span> name {
-          <span class="str">"hero"</span> =&gt;
-          <span class="num">0x000000</span>, _ =&gt;
-          <span class="err">Err(<span class="str">"no such accent"</span>)</span
-          >, } } <span class="kw">&#10095;</span>
-          <span class="cursor-blk"> </span>
-        </div>
+<span class="comment"># palette</span>
+<span class="kw">def</span> <span class="fn">accent</span>(name: <span class="kw">str</span>) -&gt; tuple[<span class="kw">int</span>, <span class="kw">int</span>, <span class="kw">int</span>]:
+    <span class="kw">match</span> name:
+        <span class="kw">case</span> <span class="str">"hero"</span>:
+            <span class="kw">return</span> (<span class="num">0x9e</span>, <span class="num">0xa7</span>, <span class="num">0xba</span>)
+        <span class="kw">case</span> _:
+            <span class="kw">raise</span> <span class="err">ValueError(<span class="str">"no such accent"</span>)</span>
+<span class="kw">&#10095;</span> <span class="cursor-blk"> </span></div>
       </section>
 
       <footer>
-        <code>include /path/to/kasane/themes/obi.conf</code> &middot; see the
-        <a href="index.html">overview</a> for how obi compares to its siblings.
+        Example implementations can be found at
+        <a href="https://github.com/eureka-cpu/kasane/tree/master/themes"
+          >themes/</a
+        >
+        &middot; see the <a href="index.html">overview</a> for how obi compares
+        to its siblings.
       </footer>
     </main>
   </body>

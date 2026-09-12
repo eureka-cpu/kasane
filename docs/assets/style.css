@@ -208,7 +208,7 @@ table.compare .chip-inline {
 /* swatch grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.85rem;
 }
 .swatch {
@@ -293,6 +293,7 @@ table.compare .chip-inline {
   padding: 1.1rem 1.3rem;
   overflow-x: auto;
   white-space: pre;
+  font-feature-settings: "liga" 1, "calt" 1;
 }
 .term .comment {
   color: var(--nezumi);

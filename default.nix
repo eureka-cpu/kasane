@@ -62,7 +62,7 @@ let
     installCheckPhase = ''
       stale_files=""
 
-      for f in $out/themes/*-gamma-corrected.conf; do
+      for f in $out/themes/*-gamma.conf; do
         base=$(basename "$f")
         if ! diff -q "$f" "$src/themes/$base" > /dev/null 2>&1; then
           stale_files="$stale_files themes/$base"

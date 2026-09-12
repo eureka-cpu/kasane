@@ -158,7 +158,7 @@ def root_vars(colors):
     --accent-red-b:     {colors['color9']};
     --serif: "Iowan Old Style", "Hoefler Text", Georgia, "Songti SC", serif;
     --sans: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-    --mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+    --mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
     """
 
 
@@ -187,6 +187,9 @@ def page_shell(title, description, vars_css, body, current):
 <meta name="color-scheme" content="dark">
 <meta name="description" content="{description}">
 <title>{title}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
 <style>:root {{{vars_css}}}</style>
 </head>
@@ -254,17 +257,17 @@ def accent_grid(colors, accents):
 
 
 def terminal_preview(theme_key):
-    return f"""<div class="term">~/scrolls <span class="comment"># {theme_key}</span>
+    return f"""<!-- prettier-ignore -->
+<div class="term">~/scrolls <span class="comment"># {theme_key}</span>
 <span class="kw">&#10095;</span> cat {theme_key}.theme
 
-<span class="comment">-- palette --</span>
-<span class="kw">let</span> background = <span class="str">"var(--bg)"</span>
-<span class="kw">fn</span> <span class="fn">accent</span>(name: <span class="kw">str</span>) -&gt; Color {{
-    <span class="kw">match</span> name {{
-        <span class="str">"hero"</span> =&gt; <span class="num">0x000000</span>,
-        _ =&gt; <span class="err">Err(<span class="str">"no such accent"</span>)</span>,
-    }}
-}}
+<span class="comment"># palette</span>
+<span class="kw">def</span> <span class="fn">accent</span>(name: <span class="kw">str</span>) -&gt; tuple[<span class="kw">int</span>, <span class="kw">int</span>, <span class="kw">int</span>]:
+    <span class="kw">match</span> name:
+        <span class="kw">case</span> <span class="str">"hero"</span>:
+            <span class="kw">return</span> (<span class="num">0x9e</span>, <span class="num">0xa7</span>, <span class="num">0xba</span>)
+        <span class="kw">case</span> _:
+            <span class="kw">raise</span> <span class="err">ValueError(<span class="str">"no such accent"</span>)</span>
 <span class="kw">&#10095;</span> <span class="cursor-blk"> </span></div>"""
 
 
@@ -272,7 +275,7 @@ def build_theme_page(key):
     data = THEMES[key]
     colors = parse_conf(THEMES_DIR / f"{key}.conf")
     title = f"{data['label']} — palette study"
-    body = f"""  <p class="eyebrow">{data['label']} &middot; kitty theme</p>
+    body = f"""  <p class="eyebrow">{data['label']} &middot; palette study</p>
   <h1>{data['tagline']}</h1>
   <p class="lede">{data['summary']}</p>
 
@@ -293,7 +296,7 @@ def build_theme_page(key):
   </section>
 
   <footer>
-    <code>include /path/to/kasane/themes/{key}.conf</code> &middot;
+    Example implementations can be found at <a href="https://github.com/eureka-cpu/kasane/tree/master/themes">themes/</a> &middot;
     see the <a href="index.html">overview</a> for how {data['label']} compares to its siblings.
   </footer>
 """
@@ -329,8 +332,9 @@ def build_index_page():
     for label, keyname in [
         ("background", "background"),
         ("foreground", "foreground"),
-        ("Ai &middot; blue", "color4"),
+        ("Beni &middot; red", "color1"),
         ("Cha &middot; green", "color2"),
+        ("Ai &middot; blue", "color4"),
     ]:
         cells = []
         for key in ORDER:
@@ -341,7 +345,7 @@ def build_index_page():
             )
         compare_rows.append(f"<tr><th>{label}</th>{''.join(cells)}</tr>")
 
-    body = f"""  <p class="eyebrow">kasane &middot; kitty themes</p>
+    body = f"""  <p class="eyebrow">kasane &middot; palette study</p>
   <h1>Two quiet rooms</h1>
   <p class="lede">
     <em>Kasane</em> (重ね) means layering. In kimono culture it names the practice of combining
@@ -352,7 +356,7 @@ def build_index_page():
   </p>
   <p class="lede">
     Both themes were designed with accessibility in mind. The author is color-blind and has
-    dyslexia, and rotates regularly between themes like ferra, gruvbox, meliora, and ayu. All
+    dyslexia, and rotates regularly between themes like ferra, gruvbox, meliora, kanagawa, and ayu. All
     are beautiful. All eventually tire in a specific way: a single accent that reads the wrong
     hue for color-deficient eyes, or a palette so uniform the eyes adjust to it and reading
     becomes harder, prompting a theme change to reset. kasane tries to thread that needle. No
@@ -386,12 +390,12 @@ def build_index_page():
   </section>
 
   <footer>
-    Shaped by time with <a href="https://github.com/casperstorm/ferra">ferra</a>, gruvbox, meliora, and ayu.
+    Shaped by time with <a href="https://github.com/casperstorm/ferra">ferra</a>, gruvbox, meliora, kanagawa, and ayu.
   </footer>
 """
     return page_shell(
         "kasane &middot; shibui / obi",
-        "Two muted kitty terminal themes for calm, accessible reading.",
+        "Two muted colour palettes for calm, accessible reading.",
         root_vars(colors),
         body,
         "index",
