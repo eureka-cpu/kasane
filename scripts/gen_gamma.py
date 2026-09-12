@@ -120,7 +120,9 @@ def verify():
     return ok
 
 
-THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "themes")
+THEMES_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "themes", "kitty"
+)
 BASE_THEMES = ["shibui", "obi", "shibui-raised", "obi-raised"]
 
 

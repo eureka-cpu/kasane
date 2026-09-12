@@ -293,7 +293,9 @@ table.compare .chip-inline {
   padding: 1.1rem 1.3rem;
   overflow-x: auto;
   white-space: pre;
-  font-feature-settings: "liga" 1, "calt" 1;
+  font-feature-settings:
+    "liga" 1,
+    "calt" 1;
 }
 .term .comment {
   color: var(--nezumi);

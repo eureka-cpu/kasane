@@ -12,7 +12,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-THEMES_DIR = ROOT / "themes"
+THEMES_DIR = ROOT / "themes" / "kitty"
 DOCS_DIR = ROOT / "docs"
 
 
@@ -395,7 +395,7 @@ def build_index_page():
 """
     return page_shell(
         "kasane &middot; shibui / obi",
-        "Two muted colour palettes for calm, accessible reading.",
+        "Two muted color palettes for calm, accessible reading.",
         root_vars(colors),
         body,
         "index",

@@ -1,0 +1,100 @@
+# kasane — shibui raised gamma
+# Based on the ferra theme by Casper Rogild Storm <casper@asynkron.xyz>
+
+"comment" = { fg = "nezumi", modifiers = ["italic"] }
+"constant" = { fg = "fuji-bright" }
+"constant.builtin" = { fg = "fuji" }
+"function" = { fg = "kin-bright" }
+"function.macro" = { fg = "ai-bright" }
+"function.method" = { fg = "mizu-bright" }
+"keyword" = { fg = "ai-bright" }
+"operator" = { fg = "ai-bright" }
+"punctuation" = { fg = "washi" }
+"string" = { fg = "cha-bright" }
+"string.special" = { fg = "mizu" }
+"type" = { fg = "ai" }
+"type.builtin" = { fg = "ai-bright" }
+"variable" = { fg = "paper" }
+"variable.builtin" = { fg = "fuji" }
+"variable.parameter" = { fg = "cha" }
+"tag" = { fg = "cha-bright" }
+"label" = { fg = "cha-bright" }
+"attribute" = { fg = "mizu" }
+"namespace" = { fg = "mizu" }
+"module" = { fg = "mizu" }
+
+"markup.heading" = { fg = "cha-bright", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "nezumi" }
+"markup.list" = { fg = "ai-bright" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link.url" = { fg = "fuji", modifiers = ["underlined"] }
+"markup.link.text" = { fg = "fuji" }
+"markup.quote" = { fg = "nezumi" }
+"markup.raw" = { fg = "kin-bright" }
+
+"ui.background" = { bg = "ground" }
+"ui.cursor" = { fg = "ground", bg = "paper" }
+"ui.cursor.match" = { fg = "ground", bg = "nezumi" }
+"ui.cursor.select" = { fg = "ground", bg = "fuji" }
+"ui.cursor.insert" = { fg = "ground", bg = "kin-bright" }
+"ui.linenr" = { fg = "nezumi" }
+"ui.linenr.selected" = { fg = "washi-bright" }
+"ui.cursorline" = { fg = "paper", bg = "raised" }
+"ui.statusline" = { fg = "paper", bg = "raised" }
+"ui.statusline.inactive" = { fg = "nezumi", bg = "raised" }
+"ui.statusline.normal" = { fg = "ground", bg = "paper" }
+"ui.statusline.insert" = { fg = "ground", bg = "kin-bright" }
+"ui.statusline.select" = { fg = "ground", bg = "fuji" }
+"ui.popup" = { fg = "paper", bg = "raised" }
+"ui.window" = { fg = "nezumi", bg = "ground" }
+"ui.help" = { fg = "paper", bg = "raised" }
+"ui.text" = { fg = "paper" }
+"ui.text.focus" = { fg = "kin-bright" }
+"ui.menu" = { fg = "paper", bg = "raised" }
+"ui.menu.selected" = { fg = "kin-bright", bg = "raised" }
+"ui.selection" = { bg = "wash" }
+"ui.virtual" = { fg = "nezumi" }
+"ui.virtual.whitespace" = { fg = "nezumi" }
+"ui.virtual.ruler" = { bg = "raised" }
+"ui.virtual.indent-guide" = { fg = "sumi" }
+"ui.virtual.inlay-hint" = { fg = "nezumi" }
+
+"diff.plus" = { fg = "cha-bright" }
+"diff.delta" = { fg = "kin" }
+"diff.minus" = { fg = "beni-bright" }
+
+"error" = { fg = "beni-bright" }
+"warning" = { fg = "kin" }
+"info" = { fg = "paper" }
+"hint" = { fg = "paper" }
+
+"diagnostic.warning" = { underline = { color = "kin", style = "curl" } }
+"diagnostic.error" = { underline = { color = "beni-bright", style = "curl" } }
+"diagnostic.info" = { underline = { color = "paper", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "paper", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+[palette]
+ground       = "#2b2f37"
+raised       = "#323641"
+wash         = "#373c4a"
+sumi         = "#1e1f24"
+nezumi       = "#515869"
+paper        = "#cbc4a7"
+washi        = "#aba398"
+washi-bright = "#d3cfbf"
+beni         = "#ad625e"
+beni-bright  = "#c28a86"
+cha          = "#8e946f"
+cha-bright   = "#a9ad8f"
+kin          = "#ae9668"
+kin-bright   = "#c2ab87"
+ai           = "#99a2b2"
+ai-bright    = "#b2b9c3"
+fuji         = "#ac90a9"
+fuji-bright  = "#947792"
+mizu         = "#6c9490"
+mizu-bright  = "#85aba6"

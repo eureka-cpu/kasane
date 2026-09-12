@@ -100,7 +100,9 @@ def new_raw(hex_color):
 
 
 HEX_RE = re.compile(r"#[0-9a-fA-F]{6}")
-THEMES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "themes")
+THEMES_DIR = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..", "themes", "kitty"
+)
 BASE_THEMES = ["shibui", "obi", "shibui-raised", "obi-raised"]
 
 

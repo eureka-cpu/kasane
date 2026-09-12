@@ -1,6 +1,6 @@
 # kasane
 
-Two colour palettes designed for calm reading. Named for _kasane no irome_ (重ねの色目), the traditional Japanese practice of pairing kimono layers so that carefully chosen colors show at the sleeves and collar. Each layer is individually restrained, and the combination creates quiet depth without noise.
+Two color palettes designed for calm reading. Named for _kasane no irome_ (重ねの色目), the traditional Japanese practice of pairing kimono layers so that carefully chosen colors show at the sleeves and collar. Each layer is individually restrained, and the combination creates quiet depth without noise.
 
 ## Accessibility
 
@@ -25,18 +25,18 @@ include /path/to/kasane/themes/shibui.conf
 Named for the sash of a kimono: darker and plainer than the cloth, the thing that holds everything together without drawing the eye. Near-black ground with only a trace of cool. The six accents cover the full hue spread, from coral to cherry blossom to sage and water, each held at the same restraint.
 
 ```sh
-include /path/to/kasane/themes/obi.conf
+include /path/to/kasane/themes/kitty/obi.conf
 ```
 
 ## Variants
 
 Each theme ships in three forms:
 
-| File                                     | Use                                                                                                      |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `shibui.conf` / `obi.conf`               | Main dark background                                                                                     |
-| `shibui-raised.conf` / `obi-raised.conf` | Lighter background for elevated panels                                                                   |
-| `shibui-gamma.conf` / `obi-gamma.conf`   | Pre-shifted for wide-gamut displays so the perceived values match an ICC-managed browser                 |
+| File                                     | Use                                                                                      |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `shibui.conf` / `obi.conf`               | Main dark background                                                                     |
+| `shibui-raised.conf` / `obi-raised.conf` | Lighter background for elevated panels                                                   |
+| `shibui-gamma.conf` / `obi-gamma.conf`   | Pre-shifted for wide-gamut displays so the perceived values match an ICC-managed browser |
 
 ## Usage
 
@@ -44,10 +44,10 @@ The palette ships as `.conf` files in kitty's theme format. Port the hex values 
 
 ```sh
 # kitty — preview live
-kitty --config "$HOME/.config/kitty/kitty.conf" --config themes/obi.conf
+kitty --config "$HOME/.config/kitty/kitty.conf" --config themes/kitty/obi.conf
 
 # kitty — permanent, add to kitty.conf
-include /path/to/kasane/themes/obi.conf
+include /path/to/kasane/themes/kitty/obi.conf
 ```
 
 ## Layout
