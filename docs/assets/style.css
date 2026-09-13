@@ -340,7 +340,16 @@ footer a {
   .refs {
     grid-template-columns: 1fr;
   }
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
   body {
     padding: 2.4rem 1.1rem 4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
