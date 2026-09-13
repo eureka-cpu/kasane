@@ -208,7 +208,7 @@ table.compare .chip-inline {
 /* swatch grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   gap: 0.85rem;
 }
 .swatch {
@@ -340,16 +340,20 @@ footer a {
   .refs {
     grid-template-columns: 1fr;
   }
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
   body {
     padding: 2.4rem 1.1rem 4rem;
   }
 }
 
-@media (max-width: 400px) {
+/* ground grid holds 8 swatches, so only 2 or 4 columns divide evenly —
+   pin it at 2 through the width where auto-fit would otherwise land on 3 */
+@media (min-width: 600px) and (max-width: 735px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 736px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
